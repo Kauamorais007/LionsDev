@@ -17,6 +17,7 @@ process.stdin.on("data", function (data) {
   resposta = data.toString().trim();
   if (!opcao) {
     opcao = Number(resposta);
+    process.stdout.write("Qual o nome do livro? \n");
   } else {
     switch (opcao) {
       case 1:
@@ -31,11 +32,16 @@ process.stdin.on("data", function (data) {
           process.stdout.write("Qual o gênero do livro? \n");
         } else if (!livro.genero) {
           livro.genero = resposta;
-          biblioteca.push(livro);
-          livro = { nome: "", tamanho: "", autor: "", genero: "" };
           opcao = 0;
           console.log("Livro inserido com sucesso!");
-          console.log("Qual operação você deseja fazer?");
+          biblioteca.push({
+            nome: livro.nome,
+            tamanho: livro.tamanho,
+            autor: livro.autor,
+            genero: livro.genero
+          });
+          console.log(livro);,
+          
         }
         break;
       case 2:
