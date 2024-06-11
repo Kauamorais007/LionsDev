@@ -40,8 +40,8 @@ process.stdin.on("data", function (data) {
             autor: livro.autor,
             genero: livro.genero
           });
-          console.log(livro);,
-          
+          console.log(livro);
+
         }
         break;
       case 2:
