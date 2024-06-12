@@ -6,7 +6,7 @@ let livro = {
   genero: ""
 };
 
-let opcao = 0;
+let opcao = 0; 
 
 console.log("Qual operação você deseja fazer?");
 console.log("1. Inserir um livro");
