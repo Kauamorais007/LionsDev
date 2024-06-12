@@ -1,5 +1,6 @@
 # Comantos Git 
 
+
 git add -A    adiciona todos os arquivos ao git
 
 git commit -m "texto"   comenta os arquivos adicionados

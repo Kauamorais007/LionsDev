@@ -17,10 +17,10 @@ process.stdin.on("data", function (data) {
   resposta = data.toString().trim();
   if (!opcao) {
     opcao = Number(resposta);
-    process.stdout.write("Qual o nome do livro? \n");
   } else {
     switch (opcao) {
       case 1:
+        process.stdout.write("Qual o nome do livro? \n");
         if (!livro.nome) {
           livro.nome = resposta;
           process.stdout.write("Quantas páginas o livro possui? \n");
@@ -41,16 +41,33 @@ process.stdin.on("data", function (data) {
             genero: livro.genero
           });
           console.log(livro);
-
+          livro = {
+            nome: "",
+            tamanho: "",
+            autor: "",
+            genero: ""
+          };
         }
         break;
       case 2:
-        console.log("remover");
+        process.stdout.write("Qual o nome do livro que você deseja remover? \n");
+        let nomeLivroRemover = resposta;
+        let indexLivroRemover = biblioteca.findIndex(livro => livro.nome === nomeLivroRemover);
+        if (indexLivroRemover !== -1) {
+          biblioteca.splice(indexLivroRemover, 1);
+          console.log("Livro removido com sucesso!");
+        } else {
+          console.log("Livro não encontrado na biblioteca.");
+        }
+        opcao = 0;
         break;
       case 3:
-        console.log("visualizar");
+        console.log("Livros na biblioteca:");
+        biblioteca.forEach(livro => {
+          console.log(`Nome: ${livro.nome}, Autor: ${livro.autor}, Páginas: ${livro.tamanho}, Gênero: ${livro.genero}`);
+        });
+        opcao = 0;
         break;
     }
   }
 });
-
